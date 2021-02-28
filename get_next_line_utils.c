@@ -6,7 +6,7 @@
 /*   By: bboriko- <bboriko-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 16:48:39 by bboriko-          #+#    #+#             */
-/*   Updated: 2021/02/21 17:23:27 by bboriko-         ###   ########.fr       */
+/*   Updated: 2021/02/28 20:46:11 by bboriko-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		return ((char*)s1);
 }
 
-char	*ft_strchr(const char *str, int c)
-{
-	char	temp;
-
-	temp = (char)c;
-	while (*str != temp)
-	{
-		if (*str == '\0')
-			return (NULL);
-		str++;
-	}
-	return ((char*)str);
-}
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ref;
@@ -108,4 +94,23 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	ref[cont] = '\0';
 	return (ref);
+}
+
+char	*ft_strcat(char *dest, const char *src)
+{
+	char	*c_s1;
+
+	c_s1 = dest;
+	while (*dest != '\0')
+	{
+		dest++;
+	}
+	while (*src != '\0')
+	{
+		*dest = *src;
+		dest++;
+		src++;
+	}
+	*dest = '\0';
+	return (c_s1);
 }
