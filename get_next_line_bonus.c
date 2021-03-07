@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bboriko- <bboriko-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 16:48:29 by bboriko-          #+#    #+#             */
-/*   Updated: 2021/03/07 15:16:33 by bboriko-         ###   ########.fr       */
+/*   Updated: 2021/03/07 16:50:58 by bboriko-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ static int		length_jump_of_line(char *r_text, int q_v_devolver)
 	{
 		if (r_text[len] == '\n')
 		{
+			while (r_text[len] == '\n')
+			{
+				len++;
+			}
 			if(q_v_devolver == 1)
 				return (-1);
 			else
@@ -63,6 +67,7 @@ static char	*save_buffer(char *buffer, char *r_text, int r_len)
 {
 	char	*temp;
 	buffer[r_len] = '\0';
+	printf("buffer > %s\n", buffer);
 	temp = ft_strjoin(r_text, buffer);
 	free(r_text);
 	r_text = NULL;
@@ -81,12 +86,12 @@ int	get_next_line(int fd, char **line)
 		r_text[fd] = ft_strdup("");
 	if (!(buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
 		return (-1);
-	while ((length_jump_of_line(r_text[fd], 1) != -1)
-		&& ((r_len = read(fd, buffer, BUFFER_SIZE)) == BUFFER_SIZE))
+	while ((r_len = read(fd, buffer, BUFFER_SIZE)) == BUFFER_SIZE)
 		r_text[fd] = save_buffer(buffer, r_text[fd], r_len);
 	if (r_len <= 0)
 	{
 		free(r_text[fd]);
+		free(buffer);
 		return ( r_len == 0? 0: -1);
 	}
 	if (r_len != BUFFER_SIZE && r_len > 0)
@@ -102,7 +107,6 @@ int		main(int argc, char **argv)
 	int		fd;
 	char	*line;
 
-	//printf("bufer_ize= %d", BUFFER_SIZE);
 	if (argc == 1)
 		fd = 0;
 	else if (argc == 2)

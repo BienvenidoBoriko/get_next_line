@@ -6,7 +6,7 @@
 /*   By: bboriko- <bboriko-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 16:48:29 by bboriko-          #+#    #+#             */
-/*   Updated: 2021/03/07 15:16:33 by bboriko-         ###   ########.fr       */
+/*   Updated: 2021/03/07 17:36:38 by bboriko-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	get_next_line(int fd, char **line)
 	char		*buffer;
 	int			r_len;
 	static char	*r_text[FD_SIZE];
+	int len;
 
 	if (fd < 0 || line == NULL)
 		return (-1);
@@ -81,12 +82,13 @@ int	get_next_line(int fd, char **line)
 		r_text[fd] = ft_strdup("");
 	if (!(buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
 		return (-1);
-	while ((length_jump_of_line(r_text[fd], 1) != -1)
+	while ((len = length_jump_of_line(r_text[fd], 1) != -1)
 		&& ((r_len = read(fd, buffer, BUFFER_SIZE)) == BUFFER_SIZE))
 		r_text[fd] = save_buffer(buffer, r_text[fd], r_len);
-	if (r_len <= 0)
+	if (r_len <= 0 && len > 0)
 	{
 		free(r_text[fd]);
+		free(buffer);
 		return ( r_len == 0? 0: -1);
 	}
 	if (r_len != BUFFER_SIZE && r_len > 0)
@@ -101,19 +103,20 @@ int		main(int argc, char **argv)
 {
 	int		fd;
 	char	*line;
+	int ultimo;
 
-	//printf("bufer_ize= %d", BUFFER_SIZE);
 	if (argc == 1)
 		fd = 0;
 	else if (argc == 2)
 		fd = open(argv[1], O_RDONLY);
 	else
 		return (2);
-	while (get_next_line(fd, &line) == 1)
+	while ((ultimo = get_next_line(fd, &line)) == 1)
 	{
 		printf("%s\n", line);
 		free(line);
 	}
 	if (argc == 2)
 		close(fd);
+	system("leaks a.out");
 }

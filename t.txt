@@ -2,15 +2,22 @@ Sus funciones no pueden pararse de forma inesperada (segmentation fault, bus err
 double free, etc.) salvo en el caso de comportamientos indefinidos. Si esto ocurre,
 se considerará que su proyecto no es válido y tendrá un 0 en la evaluación.
 Su Makefile debe incluir al menos las reglas $(NAME), all, clean, fclean y re.
+
 Su Makefile solo debe compilar/enlazar los archivos necesarios.
 • Para entregar ejercicios extras en su proyecto tendrá que incluir una regla bonus
 en su Makefile que añadirá los distintos headers, bibliotecas o funciones que estén
 prohibidas en la parte principal del proyecto. Los ejercicios extras deberán estar en
 un archivo _bonus.{c/h}. Las evaluaciones de la parte obligatoria y de la parte
 extra se hacen por separado.
+
+
+
+
+
 • Le recomendamos que cree programas de prueba para sus proyectos, aunque ese
 trabajo no será ni entregado ni evaluado. Esto le dará la oportunidad de probar
 fácilmente su trabajo al igual que el de sus compañeros.
+
 • Entregue su trabajo en el repositorio git que se le ha asignado. Solo se evaluará el
 trabajo entregado a través del git. Si Deepthought le tiene que evaluar, lo hará después de las evaluaciones de sus compañeros. Si surge un error durante la evaluación
 de Deepthought, esta última se parará.
