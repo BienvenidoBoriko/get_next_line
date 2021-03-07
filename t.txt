@@ -26,3 +26,8 @@ protocolo de llamadas entre funciones.
 • Tiene que entregar archivos ’.s’ y no asm inline
 • Debe compilar su código con nasm
 • Debe utilizar la sintaxis Intel y no la de AT&T.
+
+
+
+
+

@@ -6,7 +6,7 @@
 /*   By: bboriko- <bboriko-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 16:48:29 by bboriko-          #+#    #+#             */
-/*   Updated: 2021/03/07 17:36:38 by bboriko-         ###   ########.fr       */
+/*   Updated: 2021/03/07 21:49:34 by bboriko-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,5 @@ int		main(int argc, char **argv)
 	}
 	if (argc == 2)
 		close(fd);
-	system("leaks a.out");
+	//system("leaks a.out");
 }

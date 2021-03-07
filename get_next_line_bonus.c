@@ -6,7 +6,7 @@
 /*   By: bboriko- <bboriko-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 16:48:29 by bboriko-          #+#    #+#             */
-/*   Updated: 2021/03/07 16:50:58 by bboriko-         ###   ########.fr       */
+/*   Updated: 2021/03/07 18:52:09 by bboriko-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	get_next_line(int fd, char **line)
 	return (1);
 }
 
-int		main(int argc, char **argv)
+/*int		main(int argc, char **argv)
 {
 	int		fd;
 	char	*line;
@@ -121,3 +121,4 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 		close(fd);
 }
+*/
